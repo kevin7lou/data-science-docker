@@ -1,0 +1,5 @@
+src/.ipynb_checkpoints/
+.idea/
+terraform/.terraform/
+terraform/.terraform.lock.hcl
+.env
