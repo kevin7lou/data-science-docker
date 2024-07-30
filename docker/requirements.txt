@@ -1,0 +1,17 @@
+numpy>=1.7
+# # Statistics
+# pingouin~=0.5
+# statsmodels~=0.14
+
+# # Machine Learning
+# scikit-learn~=1.5
+
+# # Causal Inference
+# CausalInference~=0.1
+# hypothetical~=0.3
+# # pystan~=2.19
+# # Cython: >=0.22
+# # NumPy: >=1.7
+
+# # Time Series
+# prophet~=1.1.5

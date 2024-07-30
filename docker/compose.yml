@@ -1,13 +1,14 @@
 services:
-  pyspark-notebook:
+  pyspark-nbdiy:
     build:
       context: .
       dockerfile: Dockerfile
     ports:
       - "8888:8888"
     volumes:
-      - ./src:/home/jovyan/src
-      - ./data:/home/jovyan/data
+      - /Users/kevinlou/Studio/Statistics-and-Data-Analysis-in-Python:/home/jovyan/notebooks/
+      # - ./data:/home/jovyan/data
     working_dir: /home/jovyan
-    env_file:
-      - .env
+    # env_file:
+    #   - .env
+
