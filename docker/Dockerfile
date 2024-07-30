@@ -2,8 +2,8 @@
 ARG REGISTRY=quay.io
 ARG OWNER=jupyter
 ARG PYTHON_VERSION=3.11
-ARG BASE_IMAGE=quay.io/jupyter/minimal-notebook
-# ${REGISTRY}/${OWNER}/pyspark-notebook:python-${PYTHON_VERSION}
+ARG BASE_IMAGE=${REGISTRY}/${OWNER}/pyspark-notebook:python-${PYTHON_VERSION}
+# quay.io/jupyter/minimal-notebook
 ARG REQUIREMENTS_FILE=../requirements.txt
 
 # 使用quay.io/jupyter/pyspark-notebook:latest作为基础镜像
@@ -41,22 +41,19 @@ WORKDIR /home/jovyan
 
 # RUN pip install --no-cache-dir -r /home/jovyan/work/requirements.txt
 
+
+# 将requirements.txt文件复制到容器中
+# COPY ${REQUIREMENTS_FILE} /home/${NB_USER}/work/requirements.txt
 COPY ../requirements.txt /home/jovyan/work/requirements.txt
 
+# 使用pip安装requirements.txt中列出的Python库
+# RUN pip install --no-cache-dir -r /home/${NB_USER}/work/requirements.txt
 RUN python -m pip install \
 # #     -r /tmp/requirements/jupyter-requirements.txt \
 # #     -r /tmp/requirements/mlrun-api-requirements.txt \
 # #     -r /tmp/requirements/extras-requirement.txt \
     -r /home/jovyan/work/requirements.txt
 
-
-
-
-# 将requirements.txt文件复制到容器中
-# COPY ${REQUIREMENTS_FILE} /home/${NB_USER}/work/requirements.txt
-
-# 使用pip安装requirements.txt中列出的Python库
-# RUN pip install --no-cache-dir -r /home/${NB_USER}/work/requirements.txt
 
 # 可选：暴露端口，如果需要的话（例如，如果你的应用程序运行在特定的端口上）
 EXPOSE 8888
@@ -66,7 +63,6 @@ COPY . /home/${NB_USER}/work
 
 # 可选：设置容器启动时执行的命令，例如启动Jupyter Notebook
 CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--no-browser", "--allow-root"]
-
 
 
 
