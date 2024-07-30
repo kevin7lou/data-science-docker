@@ -1,5 +1,5 @@
 services:
-  pyspark-nbdiy:
+  pyspark-jupyter:
     build:
       context: .
       dockerfile: Dockerfile
