@@ -6,9 +6,10 @@ services:
     ports:
       - "8888:8888"
     volumes:
-      - /Users/kevinlou/Studio/Statistics-and-Data-Analysis-in-Python:/home/jovyan/notebooks/
+      - /Users/kevinlou/Studio/ipynb:/home/jovyan/notebooks/
       # - ./data:/home/jovyan/data
     working_dir: /home/jovyan
+    container_name: pyspark-jupyter  # Replace with your desired name
     # env_file:
     #   - .env
 
